@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<head>
+
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+	<script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+<meta charset="ISO-8859-1">
+
+<style>
+body {
+    background-image: url("images/20.jpg");
+    background-size:100%;
+     background-image:no-repeat;
+  	height:500px;
+}
+</style>
+
+<title>Feedback Main</title>
+
+</head>
+<body>
+
+<br>
+<div>
+	<center><h2 ><b>Feedback Management</b></h2></center>
+
+
+	
+	<tr>
+		<div align = "left" >
+		   <h6><a  th:href="@{'/new'}"><button type="submit" class="btn1">Add A New Feedback</a></button></h6>  
+</div></tr>
+
+<hr>
+<a  th:href="@{'/export'}"><button type="submit" class="btn1">Export to PDF</a></button>
+
+
+
+<center><br>
+
+	<tr>
+	<div class="col-sm-5" align = "center">
+                 <div class="panel-body" align = "center" ><table class="table">
+  <thead class="red">
+    <tr>
+      		<th>Feedback</th>
+            <th>Help full</th>
+            <th>Edit</th>
+            <th>Delete</th>
+   	</tr>
+  </thead>
+  <tbody>
+      <tr  th:each="user : ${listuser}">
+		<td th:text="${user.feedback}">Feedback</td>
+		<td th:text="${user.helpfull}">Help full</td>
+						
+		<td>
+			<a th:href="@{'/edit/' + ${user.id}}">Edit</a>
+		</td>							    
+		<td>
+			<a th:href="@{'/delete/' + ${user.id}}">Delete</a>
+		</td>		    
+		</tr> 
+   
+  </tbody>
+</table>  </div></div> </tr>
+</div>
+</center>
+</body>
+</html>
